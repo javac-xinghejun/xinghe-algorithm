@@ -117,13 +117,24 @@ public class Sorter {
         System.out.println();
     }
 
+//    public static void main(String[] args) {
+//        int[] array = {10, 2, 3, 8, 9, 7, 59, 8, 2, 4};
+//        printArray(array);
+////        selectSort(array);
+////        bubbleSort(array);
+////        insertSort(array);
+//        mySort(array);
+//        printArray(array);
+//    }
+
+
     public static void main(String[] args) {
-        int[] array = {10, 2, 3, 8, 9, 7, 59, 8, 2, 4};
-        printArray(array);
-//        selectSort(array);
-//        bubbleSort(array);
-//        insertSort(array);
-        mySort(array);
-        printArray(array);
+        int[] arrays = CompTest.createArrayWithRandomLengthAndMaxValue(10, 100);
+        selectSort(arrays);
+        System.out.println(CompTest.isAscOrderArray(arrays));
+//        bubbleSort();
+        int[] array1 = CompTest.createArrayWithRandomLengthAndMaxValue(100, 1000);
+        bubbleSort(array1);
+        System.out.println(CompTest.isAscOrderArray(array1));
     }
 }
