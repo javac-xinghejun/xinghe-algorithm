@@ -19,13 +19,36 @@ public class CompTest {
      * @return {@link int[]}
      */
     public static int[] createArrayWithRandomLengthAndMaxValue(int maxLength, int maxValue) {
-        int length = (int) Math.random() * maxLength;
+        int length = (int) (Math.random() * maxLength);
         int[] arrays = new int[length];
         for (int i = 0; i < length; i++) {
-            arrays[i] = (int) Math.random() * maxLength;
+            arrays[i] = (int) (Math.random() * maxValue);
         }
         return arrays;
     }
+
+
+    /**
+     * 生成随机数组，相邻数不相等
+     *
+     * @param maxLength 最大长度
+     * @param maxValue  最大价值
+     * @return {@link int[]}
+     */
+    public static int[] createArrayWithRandomLengthAndMaxValue1(int maxLength, int maxValue) {
+        int length = (int) (Math.random() * maxLength);
+        int[] arrays = new int[length];
+        if (length > 0) {
+            arrays[0] = (int) (Math.random() * maxValue);
+            for (int i = 1; i < length; i++) {
+                do {
+                    arrays[i] = (int) (Math.random() * maxValue);
+                } while (arrays[i] == arrays[i - 1]);
+            }
+        }
+        return arrays;
+    }
+
 
     /**
      * 判断数组是升序的
@@ -48,7 +71,11 @@ public class CompTest {
     }
 
     public static void main(String[] args) {
-        int[] arrays = {1,2,1,2,3,4,5};
+        int[] arrays = {1, 2, 1, 2, 3, 4, 5};
         System.out.println(isAscOrderArray(arrays));
+
+//        int[] arrayWithRandomLengthAndMaxValue = createArrayWithRandomLengthAndMaxValue(10, 100);
+        int[] arrayWithRandomLengthAndMaxValue = createArrayWithRandomLengthAndMaxValue(4, 98);
+        System.out.println("====");
     }
 }
