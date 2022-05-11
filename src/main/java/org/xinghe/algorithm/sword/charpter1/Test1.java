@@ -43,19 +43,53 @@ public class Test1 {
         return dividend / divisor;
     }
 
+    public static int divideSword(int dividend, int divisor) {
+        if (Integer.MIN_VALUE == dividend && divisor == -1) {
+            return Integer.MAX_VALUE;
+        }
+        int negative = 2;
+        if (dividend > 0) {
+            dividend = -dividend;
+            negative--;
+        }
+        if (divisor > 0) {
+            divisor = -divisor;
+            negative--;
+        }
+        int result = divideCore(dividend, divisor);
+        return negative == 1 ? -result : result;
+    }
+
+    private static int divideCore(int dividend, int divisor) {
+        int result = 0;
+        while (dividend <= divisor) {
+            int value = divisor;
+            int quotient = 1;
+            while (value >= 0xc0000000 && dividend <= value + value) {
+                quotient += quotient;
+                value += value;
+            }
+            result += quotient;
+            dividend -= value;
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         int testTimes = 10000;
         int maxValue = Integer.MAX_VALUE;
         boolean allSuccess = true;
         for (int i = 0; i < testTimes; i++) {
-            int dividend = (int) (Math.random() * maxValue);
+            int dividend = -(int) (Math.random() * maxValue);
             int divisor = (int) (Math.random() * maxValue);
-            if (divide(dividend, divisor) != divideTest(dividend, divisor)) {
+            if (divide(dividend, divisor) != divideSword(dividend, divisor)) {
                 System.out.println("dividend:" + dividend + " divisor:" + divisor);
                 allSuccess = false;
                 break;
             }
         }
         System.out.println("allSuccess:" + allSuccess);
+
     }
 }
