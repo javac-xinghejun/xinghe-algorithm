@@ -1,7 +1,5 @@
 package org.xinghe.algorithm.basics;
 
-import java.util.Deque;
-
 /**
  * 描述
  *
@@ -30,7 +28,7 @@ public class MyDequeTest<E> {
         }
     }
 
-    void addFirst(E e) {
+    void offerFirst(E e) {
         Node<E> current = new Node<>(e, null, null);
         if (head == null) {
             head = current;
@@ -43,6 +41,50 @@ public class MyDequeTest<E> {
             head = current;
         }
         size++;
+    }
+
+    void offerLast(E e) {
+        Node<E> current = new Node<>(e, null, null);
+        if (head == null) {
+            head = current;
+            tail = current;
+        } else {
+            // 记录原来的tail，原来的tail的next指向current，current指向tail
+            Node<E> oldTail = this.tail;
+            oldTail.next = current;
+            current.last = oldTail;
+            tail = current;
+        }
+    }
+
+    E pollFirst() {
+        if (head == null) {
+            return null;
+        }
+        Node<E> oldHead = this.head;
+        E value = head.value;
+
+        Node<E> next = oldHead.next;
+        next.last = null;
+        oldHead = null;
+        head = next;
+
+        return value;
+    }
+
+    E pollLast() {
+        if (head == null) {
+            return null;
+        }
+
+        Node<E> oldTail = this.tail;
+        E value = oldTail.value;
+
+        Node<E> last = oldTail.last;
+        oldTail = null;
+        tail = last;
+
+        return value;
     }
 
 
