@@ -44,12 +44,3 @@ public class NodeTest {
         System.out.println(node.value);
     }
 }
-
-class Node {
-    public int value;
-    public Node next;
-
-    public Node(int value) {
-        this.value = value;
-    }
-}

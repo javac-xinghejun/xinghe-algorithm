@@ -31,6 +31,7 @@ public class Test1 {
         int remainder = 0;
         dividend = Math.abs(dividend);
         divisor = Math.abs(divisor);
+        // 需要优化，如果是Integer.MAX_VALUE - 1，那需要执行的时间太长了
         while (dividend - divisor > 0) {
             remainder = dividend - divisor;
             dividend = remainder;
@@ -91,5 +92,8 @@ public class Test1 {
         }
         System.out.println("allSuccess:" + allSuccess);
 
+        long l = System.currentTimeMillis();
+        int divide = divide(Integer.MAX_VALUE, 1);
+        System.out.println(System.currentTimeMillis() - l); // 花了3秒
     }
 }
