@@ -25,10 +25,59 @@ public class ReverseKNodeTest {
         }
     }
 
-    public ListNode reverseKGroup(ListNode head, int k){
-        for (int i = 0; i < k; i++) {
+    /**
+     * 反向kgroup
+     * <p>
+     * input  : 1 2 3 5 6 8 9
+     * k == 2
+     * output : 2 1 5 3 8 6 9
+     * <p>
+     * count = 7
+     * count / k + 1 = 4
+     *
+     * @param head 头
+     * @param k    k
+     * @return {@link ListNode}
+     */
+    public ListNode reverseKGroup(ListNode head, int k) {
+        int count = 0;
+        boolean hasNext = true;
+        while (hasNext) {
+            ListNode next = head.next;
+            head = next;
+            hasNext = next != null ? true : false;
+            count++;
+        }
+        if (count < k) {
+            return head;
+        }
+        int page = count / k + 1;
+        ListNode resultNode = null;
+        for (int i = 0; i < page; i++) {
+            ListNode first, last = null;
+            ListNode pageHead = reverseListNode(head, k);
+            if (i == 0) {
+                resultNode = pageHead;
+            }
+
 
         }
-        return new ListNode();
+        return resultNode;
+    }
+
+    private ListNode reverseListNode(ListNode head, int k) {
+        ListNode next, last = null;
+        while (head != null && k >= 0) {
+            // 获取下一个节点
+            next = head.next;
+            // 头结点的下一个节点指向上一个（反转）
+            head.next = last;
+            // 把head当下一个节点
+            last = head;
+            // 指针移动到next上去，循环下一次
+            head = next;
+            k--;
+        }
+        return last;
     }
 }
