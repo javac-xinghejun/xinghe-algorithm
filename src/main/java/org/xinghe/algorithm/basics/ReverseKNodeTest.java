@@ -8,22 +8,6 @@ package org.xinghe.algorithm.basics;
  * @since [版本号]
  */
 public class ReverseKNodeTest {
-    class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     /**
      * 反向kgroup
@@ -40,44 +24,58 @@ public class ReverseKNodeTest {
      * @return {@link ListNode}
      */
     public ListNode reverseKGroup(ListNode head, int k) {
-        int count = 0;
-        boolean hasNext = true;
-        while (hasNext) {
-            ListNode next = head.next;
-            head = next;
-            hasNext = next != null ? true : false;
-            count++;
-        }
-        if (count < k) {
+        ListNode start = head;
+        // 第一组
+        ListNode end = getEndNode(start, k);
+        if (end == null) {
             return head;
         }
-        int page = count / k + 1;
-        ListNode resultNode = null;
-        for (int i = 0; i < page; i++) {
-            ListNode first, last = null;
-            ListNode pageHead = reverseListNode(head, k);
-            if (i == 0) {
-                resultNode = pageHead;
+        head = end;
+        // 第一组反转
+        reverse(start, end);
+        ListNode lastEnd = start;
+        while (lastEnd.next != null) {
+            start = lastEnd.next;
+            end = getEndNode(start, k);
+            if (end == null) {
+                return head;
             }
-
-
+            reverse(start, end);
+            lastEnd.next = end;
+            lastEnd = start;
         }
-        return resultNode;
+
+        return head;
     }
 
-    private ListNode reverseListNode(ListNode head, int k) {
-        ListNode next, last = null;
-        while (head != null && k >= 0) {
-            // 获取下一个节点
-            next = head.next;
-            // 头结点的下一个节点指向上一个（反转）
-            head.next = last;
-            // 把head当下一个节点
-            last = head;
-            // 指针移动到next上去，循环下一次
-            head = next;
-            k--;
+    private ListNode getEndNode(ListNode start, int k) {
+
+        while(--k != 0 && start != null){
+            start = start.next;
         }
-        return last;
+        return start;
+
     }
+
+    private void reverse(ListNode start, ListNode end) {
+        end = end.next;
+        ListNode current = start;
+        ListNode pre = null, next = null;
+        while (current != end) {
+            next = current.next;
+            current.next = pre;
+            pre = current;
+            current = next;
+        }
+        start.next = end;
+    }
+
+    public static void main(String[] args) {
+        ListNode node = new ListNode(1);
+        node.next = new ListNode(2);
+        node.next.next = new ListNode(3);
+        ListNode node1 = new ReverseKNodeTest().reverseKGroup(node, 2);
+        System.out.println(node1);
+    }
+
 }
