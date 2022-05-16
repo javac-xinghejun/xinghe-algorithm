@@ -8,14 +8,14 @@ package org.xinghe.algorithm.basics;
  * @since [版本号]
  */
 public class Node<T> {
-    T value;
-    Node<T> next;
+    public T value;
+    public Node<T> next;
 
-    Node(T t) {
+    public Node(T t) {
         this.value = value;
     }
 
-    Node(T value, Node<T> next) {
+    public Node(T value, Node<T> next) {
         this.value = value;
         this.next = next;
     }
