@@ -25,8 +25,26 @@ public class CalculatorTest {
         return add(a, add(~b, 1)); // a加上b的相反数，b的相反数就是b取反加一
     }
 
-    public static int multi(int a,int b){
-        // 待定
+    /**
+     * 乘数
+     *      1010
+     *      1001
+     *    ------
+     *      1010
+     *     0000
+     *    0000
+     *   1010
+     *   -------
+     *   以上几个数相加
+     *   1011010
+     *
+     * @param a 一个
+     * @param b b
+     * @return int
+     */
+    public static int multi(int a, int b) {
+        //
+        return 0;
     }
 
     public static void main(String[] args) {
