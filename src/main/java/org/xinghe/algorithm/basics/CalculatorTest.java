@@ -27,8 +27,8 @@ public class CalculatorTest {
 
     /**
      * 乘数
-     *      1010
-     *      1001
+     * a    1010
+     * b    1001
      *    ------
      *      1010
      *     0000
@@ -44,7 +44,15 @@ public class CalculatorTest {
      */
     public static int multi(int a, int b) {
         //
-        return 0;
+        if (a == 0 || b == 0) {
+            return 0;
+        }
+        int res = a;
+        while ((b & 1) == 1) {
+            res = add(res, a);
+            //
+        }
+        return res;
     }
 
     public static void main(String[] args) {
