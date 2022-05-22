@@ -1,5 +1,7 @@
 package org.xinghe.algorithm.basics;
 
+import org.xinghe.algorithm.datastructure.ListNode;
+
 /**
  * 反转链表，并保留原来的链表
  *

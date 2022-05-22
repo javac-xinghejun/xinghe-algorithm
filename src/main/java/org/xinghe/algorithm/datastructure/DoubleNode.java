@@ -1,4 +1,4 @@
-package org.xinghe.algorithm.basics;
+package org.xinghe.algorithm.datastructure;
 
 /**
  * 描述
@@ -8,18 +8,18 @@ package org.xinghe.algorithm.basics;
  * @since [版本号]
  */
 public class DoubleNode<E> {
-    E value;
-    DoubleNode<E> last;
-    DoubleNode<E> next;
+    public E value;
+    public DoubleNode<E> last;
+    public DoubleNode<E> next;
 
-    DoubleNode() {
+    public DoubleNode() {
     }
 
-    DoubleNode(E value) {
+    public DoubleNode(E value) {
         this.value = value;
     }
 
-    DoubleNode(E value, DoubleNode<E> next, DoubleNode<E> last) {
+    public DoubleNode(E value, DoubleNode<E> next, DoubleNode<E> last) {
         this.value = value;
         this.next = next;
         this.last = last;

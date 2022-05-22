@@ -1,5 +1,7 @@
 package org.xinghe.algorithm.basics;
 
+import org.xinghe.algorithm.datastructure.DoubleNode;
+
 /**
  * 描述
  *

@@ -1,6 +1,6 @@
 package org.xinghe.algorithm.sword.charpter4;
 
-import org.xinghe.algorithm.basics.ListNode;
+import org.xinghe.algorithm.datastructure.ListNode;
 
 /**
  * 给定一个链表，链表中节点的顺序是L0→L1→L2→…→Ln-1→Ln，

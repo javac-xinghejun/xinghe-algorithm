@@ -1,6 +1,6 @@
 package org.xinghe.algorithm.sword.charpter4;
 
-import org.xinghe.algorithm.basics.Node;
+import org.xinghe.algorithm.datastructure.Node;
 
 /**
  * 描述

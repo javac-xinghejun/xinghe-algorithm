@@ -1,6 +1,6 @@
 package org.xinghe.algorithm.leetcode;
 
-import org.xinghe.algorithm.basics.ListNode;
+import org.xinghe.algorithm.datastructure.ListNode;
 
 /**
  * https://leetcode.cn/problems/linked-list-cycle/

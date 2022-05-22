@@ -1,6 +1,6 @@
 package org.xinghe.algorithm.util;
 
-import org.xinghe.algorithm.basics.ListNode;
+import org.xinghe.algorithm.datastructure.ListNode;
 
 /**
  * 描述

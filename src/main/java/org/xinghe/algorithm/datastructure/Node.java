@@ -1,4 +1,4 @@
-package org.xinghe.algorithm.basics;
+package org.xinghe.algorithm.datastructure;
 
 /**
  * 描述

@@ -1,5 +1,7 @@
 package org.xinghe.algorithm.basics;
 
+import org.xinghe.algorithm.datastructure.ListNode;
+
 /**
  * 描述 https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
  *
