@@ -50,6 +50,19 @@ public class BinaryCalculatorTest {
         return res;
     }
 
+    public static int multiplyAdvanced(int a, int b) {
+        int res = 0;
+        while (b != 0) {
+            // 最后一位不为0
+            if ((b & 1) != 0) {
+                res = add(res, a);
+            }
+            b = b >>> 1;
+            a = a << 1;
+        }
+        return res;
+    }
+
     /**
      * 1. a左移的次数，左移N次，则说明a至少有2^N 个b；
      * 2. a左移结果减去b的余数M，那么总的余数是(2^N)*m;
@@ -60,27 +73,27 @@ public class BinaryCalculatorTest {
      * @return int
      */
     public static int divide(int a, int b) {
-       return 0;
+        return 0;
     }
 
     public static void main(String[] args) {
 
-        System.out.println(86229 / 987);
-        System.out.println(divide(8, 3));
-        System.out.println(divide(86229, 987));
-        System.out.println(divide(7, 0));
-        System.out.println(divide(-99, 199));
-        System.out.println(-99 / 199);
+        long start = System.currentTimeMillis();
+        System.out.println(multiplyAdvanced(1, Integer.MAX_VALUE));
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+
+        System.out.println("=========start===============");
         for (int i = 0; i < 10000; i++) {
             int a = RandomUtil.randomInt(100000);
             int b = RandomUtil.randomInt(100000);
-            int res = divide(a, b);
-            int res1 = a / b;
+            int res = multiplyAdvanced(a, b);
+            int res1 = a * b;
             if (res != res1) {
                 System.out.println("a:" + a + " b:" + b);
                 break;
             }
         }
-        System.out.println("======");
+        System.out.println("================end==================");
     }
 }
